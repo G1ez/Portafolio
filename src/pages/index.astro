@@ -1,11 +1,625 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { ArrowDownToLine, ArrowRight, Github, Linkedin, Mail } from 'lucide-astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import {
+	contactLinks,
+	projects,
+	specialties,
+	stackGroups,
+	uiCopy,
+	workflow,
+} from '../content/portfolio';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const copy = uiCopy.es;
+const projectActionLabel = uiCopy.es.projectAction;
+const projectActionLabelEn = uiCopy.en.projectAction;
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={copy.pageTitle}>
+	<div id="top" class="portfolio-shell">
+		<SiteHeader />
+
+		<main>
+			<section class="hero section-grid" aria-labelledby="hero-title">
+				<div class="hero-copy">
+					<p class="eyebrow" data-i18n="heroBadge">{copy.heroBadge}</p>
+					<p class="slogan" data-i18n="heroTitle">{copy.heroTitle}</p>
+					<p class="role" data-i18n="heroRole">{copy.heroRole}</p>
+					<h1 id="hero-title" data-i18n="heroName">{copy.heroName}</h1>
+					<p class="lead" data-i18n="heroSummary">{copy.heroSummary}</p>
+
+					<div class="hero-actions" aria-label="Acciones principales">
+						<a class="button button-primary" href="#projects">
+							<span data-i18n="heroPrimary">{copy.heroPrimary}</span>
+							<ArrowRight size={18} aria-hidden="true" />
+						</a>
+						<a class="button button-secondary" href="/miguel-gonzalez-santillan-cv.docx" download>
+							<ArrowDownToLine size={18} aria-hidden="true" />
+							<span data-i18n="heroCv">{copy.heroCv}</span>
+						</a>
+						<a class="button button-secondary" href="#contact">
+							<Mail size={18} aria-hidden="true" />
+							<span data-i18n="heroContact">{copy.heroContact}</span>
+						</a>
+					</div>
+				</div>
+
+				<aside class="hero-panel" aria-label="Resumen del perfil">
+					<div>
+						<span data-i18n="heroMetricSystems">{copy.heroMetricSystems}</span>
+						<strong data-i18n="heroMetricSystemsText">{copy.heroMetricSystemsText}</strong>
+					</div>
+					<div>
+						<span data-i18n="heroMetricFocus">{copy.heroMetricFocus}</span>
+						<strong data-i18n="heroMetricFocusText">{copy.heroMetricFocusText}</strong>
+					</div>
+					<div>
+						<span data-i18n="heroMetricTools">{copy.heroMetricTools}</span>
+						<strong data-i18n="heroMetricToolsText">{copy.heroMetricToolsText}</strong>
+					</div>
+				</aside>
+			</section>
+
+			<section id="about" class="content-section section-grid" aria-labelledby="about-title">
+				<div class="section-heading">
+					<p class="eyebrow" data-i18n="aboutEyebrow">{copy.aboutEyebrow}</p>
+					<h2 id="about-title" data-i18n="aboutTitle">{copy.aboutTitle}</h2>
+				</div>
+				<div class="section-body">
+					<p data-i18n="aboutBody">{copy.aboutBody}</p>
+					<blockquote data-i18n="aboutQuote">{copy.aboutQuote}</blockquote>
+				</div>
+			</section>
+
+			<section id="specialties" class="content-section" aria-labelledby="specialties-title">
+				<div class="section-heading wide">
+					<p class="eyebrow" data-i18n="specialtiesEyebrow">{copy.specialtiesEyebrow}</p>
+					<h2 id="specialties-title" data-i18n="specialtiesTitle">{copy.specialtiesTitle}</h2>
+				</div>
+
+				<div class="specialty-grid">
+					{specialties.map((item) => (
+						<article class="specialty-card">
+							<h3 data-lang-es={item.title.es} data-lang-en={item.title.en}>{item.title.es}</h3>
+							<p data-lang-es={item.description.es} data-lang-en={item.description.en}>{item.description.es}</p>
+							<ul class="tag-list" aria-label="Tecnologias relacionadas">
+								{item.technologies.map((technology) => <li>{technology}</li>)}
+							</ul>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="projects" class="content-section" aria-labelledby="projects-title">
+				<div class="section-heading wide">
+					<p class="eyebrow" data-i18n="projectsEyebrow">{copy.projectsEyebrow}</p>
+					<h2 id="projects-title" data-i18n="projectsTitle">{copy.projectsTitle}</h2>
+				</div>
+
+				<div class="project-grid">
+					{projects.map((project) => (
+						<article class="project-card">
+							<div class="project-card-header">
+								<h3>{project.name}</h3>
+								<a class="details-link" href="#contact" data-lang-es={projectActionLabel} data-lang-en={projectActionLabelEn}>{projectActionLabel}</a>
+							</div>
+							<dl class="project-details">
+								<div>
+									<dt data-i18n="projectProblem">{copy.projectProblem}</dt>
+									<dd data-lang-es={project.problem.es} data-lang-en={project.problem.en}>{project.problem.es}</dd>
+								</div>
+								<div>
+									<dt data-i18n="projectSolution">{copy.projectSolution}</dt>
+									<dd data-lang-es={project.solution.es} data-lang-en={project.solution.en}>{project.solution.es}</dd>
+								</div>
+								<div>
+									<dt data-i18n="projectValue">{copy.projectValue}</dt>
+									<dd data-lang-es={project.value.es} data-lang-en={project.value.en}>{project.value.es}</dd>
+								</div>
+							</dl>
+							<div class="tech-row">
+								<span data-i18n="projectTech">{copy.projectTech}</span>
+								<ul class="tag-list compact">
+									{project.technologies.map((technology) => <li>{technology}</li>)}
+								</ul>
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="experience" class="content-section section-grid" aria-labelledby="experience-title">
+				<div class="section-heading">
+					<p class="eyebrow" data-i18n="experienceEyebrow">{copy.experienceEyebrow}</p>
+					<h2 id="experience-title" data-i18n="experienceTitle">{copy.experienceTitle}</h2>
+				</div>
+				<div class="experience-card">
+					<p data-i18n="experienceBody">{copy.experienceBody}</p>
+					<ul class="experience-list">
+						<li>Backend</li>
+						<li>APIs</li>
+						<li>SQL</li>
+						<li>Interfaces administrativas</li>
+						<li>Mantenimiento evolutivo</li>
+					</ul>
+				</div>
+			</section>
+
+			<section class="content-section" aria-labelledby="stack-title">
+				<div class="section-heading wide">
+					<p class="eyebrow" data-i18n="stackEyebrow">{copy.stackEyebrow}</p>
+					<h2 id="stack-title" data-i18n="stackTitle">{copy.stackTitle}</h2>
+				</div>
+
+				<div class="stack-grid">
+					{stackGroups.map((group) => (
+						<div class="stack-group">
+							<h3 data-lang-es={group.label.es} data-lang-en={group.label.en}>{group.label.es}</h3>
+							<ul>
+								{group.items.map((item) => <li>{item}</li>)}
+							</ul>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<section class="content-section section-grid" aria-labelledby="workflow-title">
+				<div class="section-heading">
+					<p class="eyebrow" data-i18n="workflowEyebrow">{copy.workflowEyebrow}</p>
+					<h2 id="workflow-title" data-i18n="workflowTitle">{copy.workflowTitle}</h2>
+				</div>
+				<ol class="workflow-list">
+					{workflow.map((item) => <li data-lang-es={item.es} data-lang-en={item.en}>{item.es}</li>)}
+				</ol>
+			</section>
+
+			<section id="contact" class="contact-section" aria-labelledby="contact-title">
+				<p class="eyebrow" data-i18n="contactEyebrow">{copy.contactEyebrow}</p>
+				<h2 id="contact-title" data-i18n="contactTitle">{copy.contactTitle}</h2>
+				<p data-i18n="contactBody">{copy.contactBody}</p>
+				<div class="contact-actions">
+					<a class="button button-primary" href={contactLinks[0].href}>
+						<Mail size={18} aria-hidden="true" />
+						<span data-i18n={contactLinks[0].key}>{copy.contactEmail}</span>
+					</a>
+					<a class="button button-secondary" href={contactLinks[1].href} target="_blank" rel="noreferrer">
+						<Github size={18} aria-hidden="true" />
+						<span data-i18n={contactLinks[1].key}>{copy.contactGithub}</span>
+					</a>
+					<a class="button button-secondary" href={contactLinks[2].href} target="_blank" rel="noreferrer">
+						<Linkedin size={18} aria-hidden="true" />
+						<span data-i18n={contactLinks[2].key}>{copy.contactLinkedin}</span>
+					</a>
+				</div>
+			</section>
+		</main>
+	</div>
 </Layout>
+
+<style>
+	.portfolio-shell {
+		width: min(1180px, calc(100% - 2rem));
+		margin: 0 auto;
+	}
+
+	main {
+		display: grid;
+		gap: clamp(4rem, 8vw, 7rem);
+		padding: 2rem 0 4rem;
+	}
+
+	.section-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.92fr) minmax(20rem, 1fr);
+		gap: clamp(2rem, 6vw, 5rem);
+		align-items: start;
+	}
+
+	.hero {
+		min-height: calc(100vh - 7rem);
+		align-items: center;
+		padding: clamp(2.5rem, 7vw, 6rem) 0;
+	}
+
+	.eyebrow {
+		margin: 0 0 1rem;
+		color: var(--muted);
+		font-size: 0.78rem;
+		font-weight: 900;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.slogan {
+		margin: 0 0 0.4rem;
+		font-size: clamp(1.05rem, 2vw, 1.35rem);
+		font-weight: 800;
+	}
+
+	.role {
+		margin: 0 0 1.4rem;
+		color: var(--muted);
+		font-weight: 700;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		letter-spacing: 0;
+	}
+
+	h1 {
+		max-width: 13ch;
+		margin: 0;
+		font-size: clamp(3.1rem, 7vw, 6.5rem);
+		line-height: 0.96;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.8rem);
+		line-height: 1.02;
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.08rem;
+		line-height: 1.25;
+	}
+
+	.lead,
+	.section-body p,
+	.experience-card p,
+	.contact-section p {
+		color: var(--muted);
+		font-size: clamp(1rem, 1.7vw, 1.2rem);
+		line-height: 1.7;
+	}
+
+	.lead {
+		max-width: 43rem;
+		margin: 1.4rem 0 0;
+	}
+
+	.hero-actions,
+	.contact-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		margin-top: 2rem;
+	}
+
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		min-height: 3rem;
+		padding: 0 1rem;
+		border-radius: var(--radius-sm);
+		font-weight: 800;
+		text-decoration: none;
+		transition:
+			transform 160ms ease,
+			border-color 160ms ease,
+			background-color 160ms ease;
+	}
+
+	.button:hover,
+	.button:focus-visible {
+		transform: translateY(-1px);
+	}
+
+	.button-primary {
+		border: 1px solid var(--text);
+		background: var(--text);
+		color: var(--background);
+	}
+
+	.button-secondary {
+		border: 1px solid var(--border);
+		background: var(--surface);
+		color: var(--text);
+	}
+
+	.hero-panel,
+	.specialty-card,
+	.project-card,
+	.experience-card,
+	.stack-group,
+	.contact-section {
+		border: 1px solid var(--border);
+		border-radius: var(--radius-md);
+		background: var(--surface);
+		box-shadow: var(--shadow);
+	}
+
+	.hero-panel {
+		display: grid;
+		gap: 0;
+		padding: 0.5rem;
+	}
+
+	.hero-panel div {
+		padding: 1.15rem;
+		border-radius: var(--radius-sm);
+	}
+
+	.hero-panel div + div {
+		border-top: 1px solid var(--border);
+	}
+
+	.hero-panel span,
+	.tech-row span {
+		display: block;
+		margin-bottom: 0.35rem;
+		color: var(--muted);
+		font-size: 0.78rem;
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+
+	.hero-panel strong {
+		display: block;
+		font-size: clamp(1.05rem, 2vw, 1.45rem);
+		line-height: 1.28;
+	}
+
+	.content-section {
+		scroll-margin-top: 6rem;
+	}
+
+	.section-heading {
+		max-width: 42rem;
+	}
+
+	.section-heading.wide {
+		max-width: 56rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.section-body p {
+		margin: 0;
+	}
+
+	blockquote {
+		margin: 1.5rem 0 0;
+		padding: 1rem 0 1rem 1.25rem;
+		border-left: 3px solid var(--text);
+		font-size: clamp(1.2rem, 2vw, 1.6rem);
+		font-weight: 800;
+		line-height: 1.35;
+	}
+
+	.specialty-grid {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	.specialty-card,
+	.project-card,
+	.stack-group {
+		padding: 1.15rem;
+	}
+
+	.specialty-card p {
+		margin: 0.75rem 0 1rem;
+		color: var(--muted);
+		line-height: 1.55;
+	}
+
+	.tag-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	.tag-list li,
+	.experience-list li {
+		border: 1px solid var(--border);
+		border-radius: var(--radius-pill);
+		background: var(--surface-subtle);
+		color: var(--text);
+		font-size: 0.78rem;
+		font-weight: 800;
+		line-height: 1;
+		padding: 0.45rem 0.6rem;
+	}
+
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	.project-card {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.project-card-header {
+		display: flex;
+		align-items: start;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.details-link {
+		flex: 0 0 auto;
+		color: var(--text);
+		font-size: 0.82rem;
+		font-weight: 900;
+		text-decoration: none;
+	}
+
+	.project-details {
+		display: grid;
+		gap: 1rem;
+		margin: 0;
+	}
+
+	.project-details div {
+		display: grid;
+		gap: 0.25rem;
+	}
+
+	dt {
+		color: var(--text);
+		font-size: 0.78rem;
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+
+	dd {
+		margin: 0;
+		color: var(--muted);
+		line-height: 1.55;
+	}
+
+	.tech-row {
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	.experience-card p {
+		margin: 0;
+	}
+
+	.experience-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		padding: 0;
+		margin: 1.4rem 0 0;
+		list-style: none;
+	}
+
+	.stack-grid {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	.stack-group ul {
+		display: grid;
+		gap: 0.55rem;
+		padding: 0;
+		margin: 1rem 0 0;
+		list-style: none;
+		color: var(--muted);
+		line-height: 1.35;
+	}
+
+	.workflow-list {
+		display: grid;
+		gap: 0.75rem;
+		padding: 0;
+		margin: 0;
+		counter-reset: workflow;
+		list-style: none;
+	}
+
+	.workflow-list li {
+		display: grid;
+		grid-template-columns: 2.5rem 1fr;
+		align-items: center;
+		gap: 0.9rem;
+		padding: 0.9rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
+		background: var(--surface);
+		font-weight: 800;
+		line-height: 1.35;
+		counter-increment: workflow;
+	}
+
+	.workflow-list li::before {
+		content: counter(workflow, decimal-leading-zero);
+		display: inline-grid;
+		place-items: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: var(--radius-xs);
+		background: var(--surface-subtle);
+		color: var(--muted);
+		font-size: 0.8rem;
+		font-weight: 900;
+	}
+
+	.contact-section {
+		padding: clamp(1.25rem, 4vw, 2.5rem);
+		text-align: left;
+	}
+
+	.contact-section h2 {
+		max-width: 16ch;
+	}
+
+	.contact-section p:not(.eyebrow) {
+		max-width: 50rem;
+		margin: 1.2rem 0 0;
+	}
+
+	@media (max-width: 1100px) {
+		.specialty-grid,
+		.stack-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 860px) {
+		main {
+			gap: 4rem;
+		}
+
+		.section-grid,
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+
+		h1 {
+			max-width: 11ch;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.portfolio-shell {
+			width: min(100% - 1.25rem, 1180px);
+		}
+
+		main {
+			padding-top: 1rem;
+		}
+
+		.hero {
+			min-height: auto;
+			padding-top: 2rem;
+		}
+
+		.hero-actions,
+		.contact-actions {
+			align-items: stretch;
+			flex-direction: column;
+		}
+
+		.button {
+			width: 100%;
+		}
+
+		.specialty-grid,
+		.stack-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.project-card-header {
+			align-items: stretch;
+			flex-direction: column;
+		}
+	}
+</style>
