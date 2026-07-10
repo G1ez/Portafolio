@@ -387,13 +387,17 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 
 	.button {
 		display: inline-flex;
+		box-sizing: border-box;
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
+		max-width: 100%;
 		min-height: 3rem;
+		min-width: 0;
 		padding: 0 1rem;
 		border-radius: var(--radius-sm);
 		font-weight: 800;
+		text-align: center;
 		text-decoration: none;
 		transition:
 			transform 160ms ease,
@@ -885,14 +889,25 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 			transform: translateX(-50%);
 		}
 
+		.hero-copy,
+		.contact-section {
+			min-width: 0;
+			width: 100%;
+		}
+
 		.hero-actions,
 		.contact-actions {
-			align-items: stretch;
+			align-items: center;
 			flex-direction: column;
+			width: 100%;
+			max-width: 100%;
+			min-width: 0;
 		}
 
 		.button {
-			width: 100%;
+			width: min(100%, calc(100vw - 2.5rem));
+			max-width: 100%;
+			padding-inline: 0.85rem;
 		}
 
 		.specialty-grid,

@@ -106,7 +106,9 @@ const { title = 'Miguel Angel Gonzalez Santillan | Desarrollador Full Stack' } =
 			color 180ms ease;
 	}
 
-	* {
+	:global(*),
+	:global(*::before),
+	:global(*::after) {
 		box-sizing: border-box;
 	}
 
