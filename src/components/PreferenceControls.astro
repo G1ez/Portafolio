@@ -184,11 +184,23 @@ import { uiCopy } from '../content/portfolio';
 	@media (max-width: 720px) {
 		.preferences {
 			width: 100%;
+			justify-content: center;
 		}
 
 		.control-group,
 		.theme-toggle {
 			flex: 1 1 auto;
+		}
+	}
+	@media (max-width: 420px) {
+		.preferences {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.control-group,
+		.theme-toggle {
+			width: 100%;
 		}
 	}
 </style>

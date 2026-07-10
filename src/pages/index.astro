@@ -67,7 +67,9 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 				</div>
 			</section>
 
-			<section id="about" class="content-section section-grid" aria-labelledby="about-title">
+			<section id="about" class="content-section section-grid neo-section neo-section-about" aria-labelledby="about-title">
+				<img class="neo-decor neo-decor-about" src="/neo-2.webp" alt="" aria-hidden="true" />
+				<div class="neo-decor-shine neo-decor-shine-about" aria-hidden="true"></div>
 				<div class="section-heading">
 					<p class="eyebrow" data-i18n="aboutEyebrow">{copy.aboutEyebrow}</p>
 					<h2 id="about-title" data-i18n="aboutTitle">{copy.aboutTitle}</h2>
@@ -78,7 +80,9 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 				</div>
 			</section>
 
-			<section id="specialties" class="content-section" aria-labelledby="specialties-title">
+			<section id="specialties" class="content-section neo-section neo-section-specialties" aria-labelledby="specialties-title">
+				<img class="neo-decor neo-decor-specialties" src="/neo-3.webp" alt="" aria-hidden="true" />
+				<div class="neo-decor-shine neo-decor-shine-specialties" aria-hidden="true"></div>
 				<div class="section-heading wide">
 					<p class="eyebrow" data-i18n="specialtiesEyebrow">{copy.specialtiesEyebrow}</p>
 					<h2 id="specialties-title" data-i18n="specialtiesTitle">{copy.specialtiesTitle}</h2>
@@ -135,7 +139,9 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 				</div>
 			</section>
 
-			<section id="experience" class="content-section section-grid" aria-labelledby="experience-title">
+			<section id="experience" class="content-section section-grid neo-section neo-section-experience" aria-labelledby="experience-title">
+				<img class="neo-decor neo-decor-experience" src="/neo-4.webp" alt="" aria-hidden="true" />
+				<div class="neo-decor-shine neo-decor-shine-experience" aria-hidden="true"></div>
 				<div class="section-heading">
 					<p class="eyebrow" data-i18n="experienceEyebrow">{copy.experienceEyebrow}</p>
 					<h2 id="experience-title" data-i18n="experienceTitle">{copy.experienceTitle}</h2>
@@ -202,27 +208,12 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		</main>
 	</div>
 </Layout>
-<script>
-	const hero = document.querySelector('.hero');
-	const neoBackground = document.querySelector('.neo-background');
-
-	const updateNeoShine = (event) => {
-		if (!(hero instanceof HTMLElement) || !(neoBackground instanceof HTMLElement)) return;
-
-		const rect = neoBackground.getBoundingClientRect();
-		const x = ((event.clientX - rect.left) / rect.width) * 100;
-		const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-		hero.style.setProperty('--neo-shine-x', `${Math.max(0, Math.min(100, x))}%`);
-		hero.style.setProperty('--neo-shine-y', `${Math.max(0, Math.min(100, y))}%`);
-	};
-
-	hero?.addEventListener('pointermove', updateNeoShine);
-</script>
 <style>
 	.portfolio-shell {
 		width: min(1180px, calc(100% - 2rem));
+		max-width: 100%;
 		margin: 0 auto;
+		overflow-x: visible;
 	}
 
 	main {
@@ -247,9 +238,8 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		--neo-opacity: 0.34;
 		--neo-shine-x: 50%;
 		--neo-shine-y: 50%;
-		--neo-hover-scale: 1.04;
-		--neo-hover-rotate: 11deg;
 		position: relative;
+		overflow-x: visible;
 		isolation: isolate;
 		min-height: calc(100vh - 7rem);
 		align-items: center;
@@ -260,7 +250,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		position: absolute;
 		top: var(--neo-top);
 		right: var(--neo-right);
-		z-index: -1;
+		z-index: 0;
 		width: var(--neo-width);
 		height: auto;
 		opacity: var(--neo-opacity);
@@ -274,8 +264,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 			drop-shadow(0 14px 34px rgba(180, 190, 198, 0.38));
 		transition:
 			filter 220ms ease,
-			opacity 220ms ease,
-			transform 220ms ease;
+			opacity 220ms ease;
 	}
 
 	:global(:root[data-theme='light']) .neo-background {
@@ -291,7 +280,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		position: absolute;
 		top: var(--neo-top);
 		right: var(--neo-right);
-		z-index: -1;
+		z-index: 0;
 		width: var(--neo-width);
 		aspect-ratio: 1024 / 1536;
 		opacity: 0;
@@ -319,6 +308,12 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 	.hero:hover .neo-shine,
 	.hero:focus-within .neo-shine {
 		opacity: 0.6;
+	}
+
+	.hero-copy,
+	.hero-visual {
+		position: relative;
+		z-index: 1;
 	}
 
 	.eyebrow {
@@ -497,6 +492,116 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 
 	.content-section {
 		scroll-margin-top: 6rem;
+	}
+
+	.neo-section {
+		--decor-width: clamp(18rem, 34vw, 32rem);
+		--decor-top: 50%;
+		--decor-right: auto;
+		--decor-bottom: auto;
+		--decor-left: auto;
+		--decor-rotate: 8deg;
+		--decor-scale: 1.2;
+		--decor-opacity: 0.28;
+		--decor-shine-x: 50%;
+		--decor-shine-y: 50%;
+		--decor-mask: url('/neo-2.webp');
+		position: relative;
+		overflow-x: visible;
+		isolation: isolate;
+	}
+
+	.neo-decor,
+	.neo-decor-shine {
+		position: absolute;
+		top: var(--decor-top);
+		right: var(--decor-right);
+		bottom: var(--decor-bottom);
+		left: var(--decor-left);
+		z-index: 0;
+		width: var(--decor-width);
+		pointer-events: none;
+		transform: translateY(-50%) rotate(var(--decor-rotate)) scale(var(--decor-scale));
+		transform-origin: center;
+		transition:
+			filter 220ms ease,
+			opacity 220ms ease;
+	}
+
+	.neo-decor {
+		height: auto;
+		opacity: var(--decor-opacity);
+		filter:
+			saturate(0.2)
+			contrast(1.16)
+			brightness(1.08)
+			drop-shadow(0 14px 34px rgba(180, 190, 198, 0.34));
+	}
+
+	:global(:root[data-theme='light']) .neo-decor {
+		filter:
+			invert(1)
+			hue-rotate(180deg)
+			saturate(0.35)
+			contrast(1.08)
+			brightness(1.06)
+			drop-shadow(0 14px 34px rgba(18, 22, 26, 0.16));
+	}
+
+	.neo-decor-shine {
+		aspect-ratio: 1024 / 1536;
+		opacity: 0;
+		background:
+			radial-gradient(
+				circle at var(--decor-shine-x) var(--decor-shine-y),
+				rgba(255, 255, 255, 0.40) 0 7%,
+				rgba(220, 228, 235, 0.7) 8% 15%,
+				rgba(180, 190, 198, 0.26) 20%,
+				transparent 20%
+			);
+		filter: blur(1px) drop-shadow(0 0 18px rgba(255, 255, 255, 0.56));
+		-webkit-mask-image: var(--decor-mask);
+		mask-image: var(--decor-mask);
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		transition: opacity 160ms ease;
+	}
+
+
+	.neo-section:hover .neo-decor-shine,
+	.neo-section:focus-within .neo-decor-shine {
+		opacity: 0.6;
+	}
+
+	.neo-section > :not(.neo-decor):not(.neo-decor-shine) {
+		position: relative;
+		z-index: 1;
+	}
+
+	.neo-section-about {
+		--decor-top: 150%;
+		--decor-right: -25rem;
+		--decor-rotate: -8deg;
+		--decor-mask: url('/neo-2.webp');
+	}
+
+	.neo-section-specialties {
+		--decor-top: 100%;
+		--decor-left: -22rem;
+		--decor-width: clamp(18rem, 32vw, 30rem);
+		--decor-rotate: 10deg;
+		--decor-opacity: 0.24;
+		--decor-mask: url('/neo-3.webp');
+	}
+
+	.neo-section-experience {
+		--decor-top: 58%;
+		--decor-right: -12rem;
+		--decor-width: clamp(19rem, 36vw, 33rem);
+		--decor-rotate: 8deg;
+		--decor-mask: url('/neo-4.webp');
 	}
 
 	.section-heading {
@@ -706,6 +811,11 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 			gap: 4rem;
 		}
 
+		.neo-section {
+			--decor-width: clamp(14rem, 42vw, 24rem);
+			--decor-opacity: 0.18;
+		}
+
 		.section-grid,
 		.project-grid {
 			grid-template-columns: 1fr;
@@ -731,13 +841,34 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 			width: min(100% - 1.25rem, 1180px);
 		}
 
+		.neo-section {
+			--decor-width: clamp(9rem, 42vw, 13rem);
+			--decor-opacity: 0.12;
+		}
+
+		.neo-section-about {
+			--decor-top: 78%;
+			--decor-right: -4rem;
+		}
+
+		.neo-section-specialties {
+			--decor-top: 46%;
+			--decor-left: -4.5rem;
+		}
+
+		.neo-section-experience {
+			--decor-top: 72%;
+			--decor-right: -4rem;
+		}
+
 		main {
 			padding-top: 1rem;
 		}
 
 		.hero {
-			--neo-right: -8rem;
-			--neo-width: clamp(18rem, 54vw, 28rem);
+			--neo-right: -5rem;
+			--neo-top: 60%;
+			--neo-width: clamp(13rem, 58vw, 20rem);
 			min-height: auto;
 			padding-top: 2rem;
 		}
