@@ -5,7 +5,7 @@ import { navItems, uiCopy } from '../content/portfolio';
 
 <header class="site-header">
 	<a class="brand" href="#top" data-aria-es={uiCopy.es.brandLabel} data-aria-en={uiCopy.en.brandLabel} aria-label={uiCopy.es.brandLabel}>
-		<span>G1ez</span>
+		<span class="brand-mark">G1EZ</span>
 	</a>
 
 	<nav class="main-nav" data-aria-es={uiCopy.es.navLabel} data-aria-en={uiCopy.en.navLabel} aria-label={uiCopy.es.navLabel}>
@@ -16,6 +16,12 @@ import { navItems, uiCopy } from '../content/portfolio';
 </header>
 
 <style>
+	@font-face {
+		font-family: 'aAnotherTag';
+		src: url('/fonts/aAnotherTag.otf') format('opentype');
+		font-display: swap;
+	}
+
 	.site-header {
 		position: sticky;
 		top: 0;
@@ -33,10 +39,15 @@ import { navItems, uiCopy } from '../content/portfolio';
 		display: inline-grid;
 		place-items: center;
 		color: var(--text);
-		font-size: clamp(1.6rem, 3vw, 2.4rem);
-		font-weight: 900;
 		text-decoration: none;
+	}
+
+	.brand-mark {
+		font-family: 'aAnotherTag', Inter, ui-sans-serif, system-ui, sans-serif;
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 200;
 		letter-spacing: 0;
+		line-height: 1;
 	}
 
 	.main-nav {
