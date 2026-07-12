@@ -146,8 +146,12 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 						<article class="specialty-card">
 							<h3 data-lang-es={item.title.es} data-lang-en={item.title.en}>{item.title.es}</h3>
 							<p data-lang-es={item.description.es} data-lang-en={item.description.en}>{item.description.es}</p>
-							<ul class="tag-list" aria-label="Tecnologias relacionadas">
-								{item.technologies.map((technology) => <li>{technology}</li>)}
+							<ul class="badge-list" aria-label="Tecnologias relacionadas">
+								{item.technologies.map((technology) => (
+									<li>
+										<img src={technology.src} alt={technology.label} loading="lazy" />
+									</li>
+								))}
 							</ul>
 						</article>
 					))}
@@ -776,6 +780,39 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		padding: 0;
 		margin: 0;
 		list-style: none;
+	}
+
+	.badge-list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+
+	.badge-list li {
+		display: inline-flex;
+		min-width: 0;
+		padding: 0;
+		margin: 0;
+		line-height: 0;
+		list-style: none;
+	}
+
+	.badge-list img {
+		display: block;
+		max-width: 100%;
+		height: 1.1rem;
+		border-radius: 0.35rem;
+		object-fit: contain;
+		transition: transform 160ms ease;
+	}
+
+	.badge-list img:hover,
+	.badge-list img:focus-visible {
+		transform: scale(1.08);
 	}
 
 	.tag-list li,

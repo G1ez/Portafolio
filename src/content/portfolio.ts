@@ -269,7 +269,13 @@ export const specialties = [
 			es: 'Diseno modulos, reglas de negocio y flujos del lado servidor con foco en estabilidad y mantenimiento.',
 			en: 'I design server-side modules, business rules, and workflows with stability and maintenance in mind.',
 		},
-		technologies: ['PHP', 'Laravel', 'CodeIgniter', 'REST', 'MVC'],
+		technologies: [
+			{ label: 'PHP', src: 'https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white' },
+			{ label: 'Laravel', src: 'https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white' },
+			{ label: 'CodeIgniter', src: 'https://img.shields.io/badge/CodeIgniter-EF4223?style=for-the-badge&logo=codeigniter&logoColor=white' },
+			{ label: 'REST', src: 'https://img.shields.io/badge/REST-02569B?style=for-the-badge&logo=fastapi&logoColor=white' },
+			{ label: 'MVC', src: 'https://img.shields.io/badge/MVC-555555?style=for-the-badge' },
+		],
 	},
 	{
 		title: { es: 'APIs e integraciones', en: 'APIs and integrations' },
@@ -277,7 +283,13 @@ export const specialties = [
 			es: 'Conecto plataformas, aplicaciones moviles y sistemas externos mediante contratos claros y datos consistentes.',
 			en: 'I connect platforms, mobile apps, and external systems through clear contracts and consistent data.',
 		},
-		technologies: ['REST APIs', 'JSON', 'Postman', 'Auth', 'Web services'],
+		technologies: [
+			{ label: 'REST APIs', src: 'https://img.shields.io/badge/REST_APIs-02569B?style=for-the-badge&logo=fastapi&logoColor=white' },
+			{ label: 'JSON', src: 'https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white' },
+			{ label: 'Postman', src: 'https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white' },
+			{ label: 'Auth', src: 'https://img.shields.io/badge/Auth-333333?style=for-the-badge&logo=auth0&logoColor=white' },
+			{ label: 'Web services', src: 'https://img.shields.io/badge/Web_Services-4A90E2?style=for-the-badge' },
+		],
 	},
 	{
 		title: { es: 'Bases de datos', en: 'Databases' },
@@ -285,7 +297,13 @@ export const specialties = [
 			es: 'Modelo estructuras SQL para operacion diaria, reportes y trazabilidad de informacion critica.',
 			en: 'I model SQL structures for daily operations, reports, and traceability of critical information.',
 		},
-		technologies: ['SQL', 'MySQL', 'Queries', 'Relaciones', 'Reportes'],
+		technologies: [
+			{ label: 'SQL', src: 'https://img.shields.io/badge/SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white' },
+			{ label: 'MySQL', src: 'https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white' },
+			{ label: 'Queries', src: 'https://img.shields.io/badge/Queries-555555?style=for-the-badge' },
+			{ label: 'Relaciones', src: 'https://img.shields.io/badge/Relaciones-2E7D32?style=for-the-badge' },
+			{ label: 'Reportes', src: 'https://img.shields.io/badge/Reportes-6A1B9A?style=for-the-badge' },
+		],
 	},
 	{
 		title: { es: 'Frontend funcional', en: 'Functional frontend' },
@@ -293,7 +311,13 @@ export const specialties = [
 			es: 'Construyo interfaces administrativas claras, rapidas de usar y conectadas con necesidades reales de operacion.',
 			en: 'I build administrative interfaces that are clear, efficient, and connected to real operational needs.',
 		},
-		technologies: ['JavaScript', 'HTML', 'CSS', 'Astro', 'UI administrativa'],
+		technologies: [
+			{ label: 'JavaScript', src: 'https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black' },
+			{ label: 'HTML', src: 'https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white' },
+			{ label: 'CSS', src: 'https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css&logoColor=white' },
+			{ label: 'Astro', src: 'https://img.shields.io/badge/Astro-BC52EE?style=for-the-badge&logo=astro&logoColor=white' },
+			{ label: 'UI administrativa', src: 'https://img.shields.io/badge/UI_Admin-222222?style=for-the-badge' },
+		],
 	},
 	{
 		title: { es: 'Sistemas empresariales', en: 'Business systems' },
@@ -301,7 +325,13 @@ export const specialties = [
 			es: 'Desarrollo plataformas para ventas, clientes, pagos, inventario, reportes y gestion interna.',
 			en: 'I develop platforms for sales, customers, payments, inventory, reports, and internal management.',
 		},
-		technologies: ['SaaS', 'On-premise', 'ERP-like modules', 'Dashboards', 'Workflows'],
+		technologies: [
+			{ label: 'SaaS', src: 'https://img.shields.io/badge/SaaS-0A66C2?style=for-the-badge' },
+			{ label: 'On-premise', src: 'https://img.shields.io/badge/On--premise-455A64?style=for-the-badge' },
+			{ label: 'ERP-like modules', src: 'https://img.shields.io/badge/ERP_Modules-00897B?style=for-the-badge' },
+			{ label: 'Dashboards', src: 'https://img.shields.io/badge/Dashboards-F57C00?style=for-the-badge' },
+			{ label: 'Workflows', src: 'https://img.shields.io/badge/Workflows-7B1FA2?style=for-the-badge' },
+		],
 	},
 ];
 
