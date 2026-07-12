@@ -52,10 +52,6 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 					<img class="hero-photo" src="/foto_pose.jpeg" alt="Miguel Angel Gonzalez Santillan con su titulo universitario" />
 					<aside class="hero-panel" aria-label="Resumen del perfil">
 						<div>
-							<span data-i18n="heroMetricSystems">{copy.heroMetricSystems}</span>
-							<strong data-i18n="heroMetricSystemsText">{copy.heroMetricSystemsText}</strong>
-						</div>
-						<div>
 							<span data-i18n="heroMetricFocus">{copy.heroMetricFocus}</span>
 							<strong data-i18n="heroMetricFocusText">{copy.heroMetricFocusText}</strong>
 						</div>
@@ -423,11 +419,12 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 	}
 
 	.hero-visual {
+		--hero-panel-offset: clamp(7rem, 4vw, 3rem);
 		position: relative;
 		display: grid;
 		align-items: end;
 		min-height: clamp(27rem, 44vw, 34rem);
-		padding: clamp(11rem, 20vw, 15rem) 0 0 clamp(1rem, 4vw, 3rem);
+		padding: clamp(11rem, 20vw, 15rem) 0 var(--hero-panel-offset) clamp(1rem, 4vw, 3rem);
 	}
 
 	.hero-photo {
@@ -467,6 +464,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		background: color-mix(in srgb, var(--surface) 40%, transparent);
 		backdrop-filter: blur(14px);
 		border-color: color-mix(in srgb, var(--border) 42%, transparent);
+		transform: translateY(var(--hero-panel-offset));
 	}
 
 	.hero-panel div {
@@ -830,6 +828,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		}
 
 		.hero-visual {
+			--hero-panel-offset: clamp(1rem, 5vw, 2rem);
 			min-height: clamp(25rem, 72vw, 32rem);
 			padding-left: min(2rem, 5vw);
 		}
@@ -878,8 +877,9 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		}
 
 		.hero-visual {
+			--hero-panel-offset: 1.25rem;
 			min-height: 23rem;
-			padding: 9.5rem 0 0;
+			padding: 9.5rem 0 var(--hero-panel-offset);
 		}
 
 		.hero-photo {
