@@ -4,6 +4,7 @@ export const defaultLanguage: Language = 'es';
 
 export const navItems = [
 	{ href: '#about', labelKey: 'navAbout' },
+	{ href: '#education', labelKey: 'navEducation' },
 	{ href: '#specialties', labelKey: 'navSpecialties' },
 	{ href: '#projects', labelKey: 'navProjects' },
 	{ href: '#experience', labelKey: 'navExperience' },
@@ -20,6 +21,7 @@ export const uiCopy = {
 		languageLabel: 'Selector de idioma',
 		themeToggleLabel: 'Cambiar tema',
 		navAbout: 'Sobre mi',
+		navEducation: 'Educación',
 		navSpecialties: 'Especialidades',
 		navProjects: 'Proyectos',
 		navExperience: 'Experiencia',
@@ -43,6 +45,12 @@ export const uiCopy = {
 		aboutBody:
 			'Para responder a la pregunta de cómo soy Ingeniero en Informatica es necesario hablar de dos palabras: crear y aprender. Desde los 15 años me interesé por el como se hacian las cosas con las que interactuaba día con día, esto me llevo a descubrir la programacion la cual se volvió mi herramienta perfecta para crear y aprender constantemente.',
 		aboutQuote: '"Crea cosas que te hagan aprender"',
+		educationEyebrow: 'Educación y certificaciones',
+		educationTitle: 'Formación técnica, ingeniería de software y aprendizaje continuo.',
+		educationStudiesLabel: 'Estudios',
+		educationCertificationsLabel: 'Certificaciones',
+		educationFocusLabel: 'Áreas clave',
+		educationSkillsLabel: 'Habilidades',
 		specialtiesEyebrow: 'Especialidades',
 		specialtiesTitle: 'Capacidades organizadas por el tipo de problema que resuelven.',
 		projectsEyebrow: 'Proyectos destacados',
@@ -77,6 +85,7 @@ export const uiCopy = {
 		languageLabel: 'Language selector',
 		themeToggleLabel: 'Change theme',
 		navAbout: 'About',
+		navEducation: 'Education',
 		navSpecialties: 'Specialties',
 		navProjects: 'Projects',
 		navExperience: 'Experience',
@@ -100,7 +109,13 @@ export const uiCopy = {
 		aboutBody:
 			"To answer the question of why I am a Software Engineer, I have to talk about two things: creating and learning. Since I was 15, I've always been curious about how the things I used every day worked. That curiosity led me to programming, which became the perfect way for me to create new things while learning something new every day.",
 			aboutQuote: '"Build things that make you learn."',
-			specialtiesEyebrow: 'Specialties',
+		educationEyebrow: 'Education and certifications',
+		educationTitle: 'Technical training, software engineering, and continuous learning.',
+		educationStudiesLabel: 'Studies',
+		educationCertificationsLabel: 'Certifications',
+		educationFocusLabel: 'Key areas',
+		educationSkillsLabel: 'Skills',
+		specialtiesEyebrow: 'Specialties',
 		specialtiesTitle: 'Capabilities grouped by the type of problem they solve.',
 		projectsEyebrow: 'Featured projects',
 		projectsTitle: 'Systems built for real operations, not just for a good-looking demo.',
@@ -126,6 +141,126 @@ export const uiCopy = {
 		contactLinkedin: 'LinkedIn',
 	},
 } as const;
+
+export const education = [
+	{
+		institution: {
+			es: 'UNIR',
+			en: 'UNIR',
+		},
+		degree: {
+			es: 'Maestría en Ingeniería de Software y Sistemas Informáticos con PSU en IA para el Desarrollo de Software y DevOps',
+			en: 'Master\'s Degree in Software Engineering and Computer Systems with a PSU in AI for Software Development and DevOps',
+		},
+		period: {
+			es: 'Agosto 2026 - Enero 2028',
+			en: 'August 2026 - January 2028',
+		},
+		focus: {
+			es: 'Ingeniería de software, sistemas informáticos, inteligencia artificial aplicada al desarrollo y prácticas DevOps.',
+			en: 'Software engineering, computer systems, AI applied to software development, and DevOps practices.',
+		},
+	},
+	{
+		institution: {
+			es: 'Universidad de Guadalajara',
+			en: 'University of Guadalajara',
+		},
+		degree: {
+			es: 'Ingeniería en Informática',
+			en: 'Computer Science Engineering',
+		},
+		period: {
+			es: 'Agosto 2021 - Julio 2025',
+			en: 'August 2021 - July 2025',
+		},
+		focus: {
+			es: 'Desarrollo de software, aplicaciones web, POO, estructuras de datos, algoritmos, bases de datos relacionales y no relacionales, modelado de información, arquitectura de computadoras, sistemas operativos, redes, máquinas virtuales, minería y análisis de datos, aplicaciones móviles, C# avanzado y Python. Graduado mediante examen CENEVAL EGEL+.',
+			en: 'Software development, web applications, OOP, data structures, algorithms, relational and non-relational databases, information modeling, computer architecture, operating systems, networking, virtual machines, data mining and analysis, mobile applications, advanced C#, and Python. Graduated through the CENEVAL EGEL+ exam.',
+		},
+	},
+	{
+		institution: {
+			es: 'Centro de Bachillerato Tecnológico Industrial y de Servicios',
+			en: 'Industrial and Services Technological High School Center',
+		},
+		degree: {
+			es: 'Técnico en Programación',
+			en: 'Programming Technician',
+		},
+		period: {
+			es: 'Agosto 2017 - Julio 2020',
+			en: 'August 2017 - July 2020',
+		},
+		focus: {
+			es: 'Algoritmos, lógica de programación, desarrollo de software básico e intermedio, POO, bases de datos y manejo de arreglos.',
+			en: 'Algorithms, programming logic, basic and intermediate software development, OOP, databases, and array handling.',
+		},
+	},
+];
+
+export const certifications = [
+	{
+		name: {
+			es: 'PDU, PC - Certificación en inglés',
+			en: 'PDU, PC - English Certification',
+		},
+		issuer: 'Proulex',
+		period: {
+			es: 'Julio 2019 - Mayo 2022',
+			en: 'July 2019 - May 2022',
+		},
+		skills: {
+			es: 'Inglés B2 certificado, comunicación profesional, lectura técnica, documentación de software y conversaciones técnicas en inglés.',
+			en: 'Certified B2 English, professional communication, technical reading, software documentation, and technical conversations in English.',
+		},
+	},
+	{
+		name: {
+			es: 'CCNA: Introduction to Networks',
+			en: 'CCNA: Introduction to Networks',
+		},
+		issuer: 'Cisco',
+		period: {
+			es: 'Diciembre 2023',
+			en: 'December 2023',
+		},
+		skills: {
+			es: 'Fundamentos de redes, fundamentos de seguridad de redes, subnetting, Ethernet, troubleshooting, IPv4 e IPv6.',
+			en: 'Networking fundamentals, network security fundamentals, subnetting, Ethernet, troubleshooting, IPv4, and IPv6.',
+		},
+	},
+	{
+		name: {
+			es: 'Python 101 for Data Science',
+			en: 'Python 101 for Data Science',
+		},
+		issuer: 'IBM',
+		period: {
+			es: 'Mayo 2023',
+			en: 'May 2023',
+		},
+		skills: {
+			es: 'Python, estructuras de datos, ciclos, funciones, diccionarios, fundamentos de multithreading y bases de análisis de datos.',
+			en: 'Python, data structures, loops, functions, dictionaries, multithreading basics, and data analysis foundations.',
+		},
+	},
+	{
+		name: {
+			es: 'Machine Learning with Python',
+			en: 'Machine Learning with Python',
+		},
+		issuer: 'IBM',
+		period: {
+			es: 'Junio 2023',
+			en: 'June 2023',
+		},
+		skills: {
+			es: 'Machine learning, clasificación, regresión, clustering, reglas de asociación y modelado de datos.',
+			en: 'Machine learning, classification, regression, clustering, association rules, and data modeling.',
+		},
+	},
+];
 
 export const specialties = [
 	{

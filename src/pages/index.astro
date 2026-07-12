@@ -2,7 +2,9 @@
 import { ArrowDownToLine, ArrowRight, Github, Linkedin, Mail } from 'lucide-astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import {
+	certifications,
 	contactLinks,
+	education,
 	projects,
 	specialties,
 	stackGroups,
@@ -73,6 +75,61 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 				<div class="section-body">
 					<p data-i18n="aboutBody">{copy.aboutBody}</p>
 					<blockquote data-i18n="aboutQuote">{copy.aboutQuote}</blockquote>
+				</div>
+			</section>
+
+			<section id="education" class="content-section education-section" aria-labelledby="education-title">
+				<div class="section-heading wide">
+					<p class="eyebrow" data-i18n="educationEyebrow">{copy.educationEyebrow}</p>
+					<h2 id="education-title" data-i18n="educationTitle">{copy.educationTitle}</h2>
+				</div>
+
+				<div class="education-layout">
+					<div class="education-column">
+						<h3 data-i18n="educationStudiesLabel">{copy.educationStudiesLabel}</h3>
+						<div class="education-list">
+							{education.map((item) => (
+								<article class="education-card">
+									<div class="education-card-header">
+										<div>
+											<h4 data-lang-es={item.degree.es} data-lang-en={item.degree.en}>{item.degree.es}</h4>
+											<p data-lang-es={item.institution.es} data-lang-en={item.institution.en}>{item.institution.es}</p>
+										</div>
+										<span data-lang-es={item.period.es} data-lang-en={item.period.en}>{item.period.es}</span>
+									</div>
+									<dl class="education-details">
+										<div>
+											<dt data-i18n="educationFocusLabel">{copy.educationFocusLabel}</dt>
+											<dd data-lang-es={item.focus.es} data-lang-en={item.focus.en}>{item.focus.es}</dd>
+										</div>
+									</dl>
+								</article>
+							))}
+						</div>
+					</div>
+
+					<div class="education-column">
+						<h3 data-i18n="educationCertificationsLabel">{copy.educationCertificationsLabel}</h3>
+						<div class="education-list compact">
+							{certifications.map((item) => (
+								<article class="education-card">
+									<div class="education-card-header">
+										<div>
+											<h4 data-lang-es={item.name.es} data-lang-en={item.name.en}>{item.name.es}</h4>
+											<p>{item.issuer}</p>
+										</div>
+										<span data-lang-es={item.period.es} data-lang-en={item.period.en}>{item.period.es}</span>
+									</div>
+									<dl class="education-details">
+										<div>
+											<dt data-i18n="educationSkillsLabel">{copy.educationSkillsLabel}</dt>
+											<dd data-lang-es={item.skills.es} data-lang-en={item.skills.en}>{item.skills.es}</dd>
+										</div>
+									</dl>
+								</article>
+							))}
+						</div>
+					</div>
 				</div>
 			</section>
 
@@ -336,6 +393,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 	h1,
 	h2,
 	h3,
+	h4,
 	p {
 		letter-spacing: 0;
 	}
@@ -357,6 +415,12 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		margin: 0;
 		font-size: 1.08rem;
 		line-height: 1.25;
+	}
+
+	h4 {
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.3;
 	}
 
 	.lead,
@@ -444,6 +508,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 	}
 
 	.hero-panel,
+	.education-card,
 	.specialty-card,
 	.project-card,
 	.experience-card,
@@ -626,6 +691,64 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		font-size: clamp(1.2rem, 2vw, 1.6rem);
 		font-weight: 800;
 		line-height: 1.35;
+	}
+
+	.education-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+		gap: 1rem;
+	}
+
+	.education-column {
+		display: grid;
+		align-content: start;
+		gap: 0.85rem;
+		min-width: 0;
+	}
+
+	.education-list {
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.education-card {
+		display: grid;
+		gap: 1rem;
+		padding: 1rem;
+	}
+
+	.education-card-header {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 0.85rem;
+		align-items: start;
+	}
+
+	.education-card-header p {
+		margin: 0.35rem 0 0;
+		color: var(--muted);
+		font-size: 0.9rem;
+		font-weight: 800;
+		line-height: 1.35;
+	}
+
+	.education-card-header span {
+		border: 1px solid var(--border);
+		border-radius: var(--radius-pill);
+		background: var(--surface-subtle);
+		color: var(--text);
+		font-size: 0.76rem;
+		font-weight: 900;
+		line-height: 1.2;
+		padding: 0.45rem 0.6rem;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	.education-details {
+		display: grid;
+		gap: 0.5rem;
+		margin: 0;
 	}
 
 	.specialty-grid {
@@ -819,6 +942,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		}
 
 		.section-grid,
+		.education-layout,
 		.project-grid {
 			grid-template-columns: 1fr;
 		}
@@ -918,6 +1042,15 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		.project-card-header {
 			align-items: stretch;
 			flex-direction: column;
+		}
+
+		.education-card-header {
+			grid-template-columns: 1fr;
+		}
+
+		.education-card-header span {
+			justify-self: start;
+			white-space: normal;
 		}
 	}
 </style>
