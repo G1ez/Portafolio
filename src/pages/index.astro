@@ -1,6 +1,7 @@
 ---
 import { ArrowDownToLine, ArrowRight, BriefcaseBusiness, Github, Linkedin, Mail } from 'lucide-astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import ProjectShowcase from '../components/ProjectShowcase.astro';
 import {
 	certifications,
 	contactLinks,
@@ -15,8 +16,6 @@ import {
 import Layout from '../layouts/Layout.astro';
 
 const copy = uiCopy.es;
-const projectActionLabel = uiCopy.es.projectAction;
-const projectActionLabelEn = uiCopy.en.projectAction;
 ---
 
 <Layout title={copy.pageTitle}>
@@ -163,36 +162,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 					<h2 id="projects-title" data-i18n="projectsTitle">{copy.projectsTitle}</h2>
 				</div>
 
-				<div class="project-grid">
-					{projects.map((project) => (
-						<article class="project-card">
-							<div class="project-card-header">
-								<h3>{project.name}</h3>
-								<a class="details-link" href="#contact" data-lang-es={projectActionLabel} data-lang-en={projectActionLabelEn}>{projectActionLabel}</a>
-							</div>
-							<dl class="project-details">
-								<div>
-									<dt data-i18n="projectProblem">{copy.projectProblem}</dt>
-									<dd data-lang-es={project.problem.es} data-lang-en={project.problem.en}>{project.problem.es}</dd>
-								</div>
-								<div>
-									<dt data-i18n="projectSolution">{copy.projectSolution}</dt>
-									<dd data-lang-es={project.solution.es} data-lang-en={project.solution.en}>{project.solution.es}</dd>
-								</div>
-								<div>
-									<dt data-i18n="projectValue">{copy.projectValue}</dt>
-									<dd data-lang-es={project.value.es} data-lang-en={project.value.en}>{project.value.es}</dd>
-								</div>
-							</dl>
-							<div class="tech-row">
-								<span data-i18n="projectTech">{copy.projectTech}</span>
-								<ul class="tag-list compact">
-									{project.technologies.map((technology) => <li>{technology}</li>)}
-								</ul>
-							</div>
-						</article>
-					))}
-				</div>
+				<ProjectShowcase projects={projects} copy={copy} />
 			</section>
 
 			<section id="experience" class="content-section neo-section neo-section-experience" aria-labelledby="experience-title">
