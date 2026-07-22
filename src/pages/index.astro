@@ -1,11 +1,12 @@
 ---
-import { ArrowDownToLine, ArrowRight, Github, Linkedin, Mail } from 'lucide-astro';
+import { ArrowDownToLine, ArrowRight, BriefcaseBusiness, Github, Linkedin, Mail } from 'lucide-astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import {
 	certifications,
 	contactLinks,
 	education,
 	projects,
+	professionalExperience,
 	specialties,
 	stackGroups,
 	uiCopy,
@@ -148,9 +149,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 							<p data-lang-es={item.description.es} data-lang-en={item.description.en}>{item.description.es}</p>
 							<ul class="badge-list" aria-label="Tecnologias relacionadas">
 								{item.technologies.map((technology) => (
-									<li>
-										<img src={technology.src} alt={technology.label} loading="lazy" />
-									</li>
+									<li>{technology.label}</li>
 								))}
 							</ul>
 						</article>
@@ -196,23 +195,35 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 				</div>
 			</section>
 
-			<section id="experience" class="content-section section-grid neo-section neo-section-experience" aria-labelledby="experience-title">
+			<section id="experience" class="content-section neo-section neo-section-experience" aria-labelledby="experience-title">
 				<img class="neo-decor neo-decor-experience" src="/neo-4.webp" alt="" aria-hidden="true" />
 				<div class="neo-decor-shine neo-decor-shine-experience" aria-hidden="true"></div>
-				<div class="section-heading">
+				<div class="section-heading wide">
 					<p class="eyebrow" data-i18n="experienceEyebrow">{copy.experienceEyebrow}</p>
 					<h2 id="experience-title" data-i18n="experienceTitle">{copy.experienceTitle}</h2>
 				</div>
-				<div class="experience-card">
-					<p data-i18n="experienceBody">{copy.experienceBody}</p>
-					<ul class="experience-list">
-						<li>Backend</li>
-						<li>APIs</li>
-						<li>SQL</li>
-						<li>Interfaces administrativas</li>
-						<li>Mantenimiento evolutivo</li>
-					</ul>
-				</div>
+				<ol class="experience-timeline">
+					{professionalExperience.map((job) => (
+						<li class="experience-entry">
+							<span class="timeline-marker" aria-hidden="true"><BriefcaseBusiness size={14} strokeWidth={2.4} /></span>
+							<article class="experience-card">
+								<div class="experience-card-header">
+									<div>
+										<time data-lang-es={job.period.es} data-lang-en={job.period.en}>{job.period.es}</time>
+										<h3 data-lang-es={job.role.es} data-lang-en={job.role.en}>{job.role.es}</h3>
+										<p class="experience-company" data-lang-es={job.company.es} data-lang-en={job.company.en}>{job.company.es}</p>
+									</div>
+									<span class="experience-location" data-lang-es={job.location.es} data-lang-en={job.location.en}>{job.location.es}</span>
+								</div>
+								<p class="experience-summary" data-lang-es={job.summary.es} data-lang-en={job.summary.en}>{job.summary.es}</p>
+								<h4 data-lang-es="Contribuciones clave" data-lang-en="Key contributions">Contribuciones clave</h4>
+								<ul class="experience-contributions">
+									{job.contributions.map((contribution) => <li data-lang-es={contribution.es} data-lang-en={contribution.en}>{contribution.es}</li>)}
+								</ul>
+							</article>
+						</li>
+					))}
+				</ol>
 			</section>
 
 			<section class="content-section" aria-labelledby="stack-title">
@@ -729,7 +740,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 	}
 
 	.education-card-header p {
-		margin: 0.35rem 0 0;
+		margin: 0.25rem 0 0;
 		color: var(--muted);
 		font-size: 0.9rem;
 		font-weight: 800;
@@ -757,7 +768,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 
 	.specialty-grid {
 		display: grid;
-		grid-template-columns: repeat(5, minmax(0, 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1rem;
 	}
 
@@ -795,23 +806,20 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 	.badge-list li {
 		display: inline-flex;
 		min-width: 0;
-		padding: 0;
+		padding: 0.4rem 0.55rem;
 		margin: 0;
-		line-height: 0;
-		list-style: none;
-	}
-
-	.badge-list img {
-		display: block;
-		max-width: 100%;
-		height: 1.1rem;
 		border-radius: 0.35rem;
-		object-fit: contain;
-		transition: transform 160ms ease;
+		background: #555;
+		color: #fff;
+		font-size: 0.68rem;
+		font-weight: 800;
+		line-height: 1.1;
+		list-style: none;
+		transition: background-color 160ms ease, transform 160ms ease;
 	}
 
-	.badge-list img:hover,
-	.badge-list img:focus-visible {
+	.badge-list li:hover {
+		background: #14532d;
 		transform: scale(1.08);
 	}
 
@@ -835,7 +843,7 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 
 	.project-card {
 		display: grid;
-		gap: 1.25rem;
+		gap: 0.8rem;
 	}
 
 	.project-card-header {
@@ -882,22 +890,78 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 		gap: 0.6rem;
 	}
 
-	.experience-card p {
-		margin: 0;
-	}
-
-	.experience-list {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		padding: 0;
-		margin: 1.4rem 0 0;
+	.experience-timeline {
+		position: relative;
+		display: grid;
+		gap: 0.8rem;
+		max-width: 54rem;
+		padding: 0 0 0 2rem;
+		margin: 1.2rem 0 0;
+		border-left: 2px solid color-mix(in srgb, var(--accent-green) 48%, var(--border));
 		list-style: none;
 	}
 
+	.experience-entry { position: relative; }
+
+	.timeline-marker {
+		position: absolute;
+		top: 0.9rem;
+		left: -2.75rem;
+		display: grid;
+		width: 1.35rem;
+		height: 1.35rem;
+		place-items: center;
+		border: 3px solid var(--background);
+		border-radius: 999px;
+		background: var(--accent-green);
+		color: #fff;
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-green) 20%, transparent);
+	}
+
+	.experience-card { padding: clamp(0.85rem, 2vw, 1.05rem); }
+
+	.experience-card-header {
+		display: flex;
+		align-items: start;
+		justify-content: space-between;
+		gap: 0.7rem;
+	}
+
+	.experience-card time,
+	.experience-location {
+		display: inline-flex;
+		width: fit-content;
+		padding: 0.22rem 0.42rem;
+		border: 1px solid color-mix(in srgb, var(--accent-green) 45%, var(--border));
+		border-radius: 0.35rem;
+		background: color-mix(in srgb, var(--accent-green) 10%, var(--surface));
+		color: var(--text);
+		font-size: 0.7rem;
+		font-weight: 800;
+		line-height: 1.2;
+	}
+
+	.experience-card h3 { margin-top: 0.5rem; font-size: clamp(1rem, 1.8vw, 1.2rem); }
+	.experience-company { margin: 0.25rem 0 0; color: var(--accent-green); font-weight: 800; }
+	.experience-summary { margin: 0.75rem 0 0; color: var(--muted); line-height: 1.5; font-size: 0.93rem; }
+	.experience-card h4 { margin-top: 0.85rem; font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+	.experience-contributions {
+		display: grid;
+		gap: 0.35rem;
+		padding: 0;
+		margin: 0.55rem 0 0;
+		list-style: none;
+		color: var(--muted);
+		line-height: 1.35; font-size: 0.9rem;
+	}
+
+	.experience-contributions li { display: grid; grid-template-columns: 0.55rem 1fr; gap: 0.55rem; }
+	.experience-contributions li::before { content: ''; width: 0.42rem; height: 0.42rem; margin-top: 0.35rem; border-radius: 999px; background: var(--accent-green); }
+
 	.stack-grid {
 		display: grid;
-		grid-template-columns: repeat(5, minmax(0, 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1rem;
 	}
 
@@ -1001,6 +1065,18 @@ const projectActionLabelEn = uiCopy.en.projectAction;
 	}
 
 	@media (max-width: 620px) {
+		.experience-timeline {
+			padding-left: 1.7rem;
+		}
+
+		.timeline-marker {
+			left: -2.4rem;
+		}
+
+		.experience-card-header {
+			flex-direction: column;
+		}
+
 		.portfolio-shell {
 			width: min(100% - 1.25rem, 1180px);
 		}

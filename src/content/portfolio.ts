@@ -262,12 +262,52 @@ export const certifications = [
 	},
 ];
 
+export const professionalExperience = [
+	{
+		role: { es: 'Desarrollador de Sistemas', en: 'Systems Developer' },
+		company: { es: 'Gobierno de Zapopan - Administración e Innovación Gubernamental', en: 'Zapopan Government - Government Administration and Innovation' },
+		location: { es: 'Zapopan, Jal.', en: 'Zapopan, Jalisco' },
+		period: { es: 'Mayo 2026 - Presente', en: 'May 2026 - Present' },
+		summary: { es: 'Desarrollo y modernización de plataformas públicas para agilizar la operación administrativa y la atención ciudadana.', en: 'Development and modernization of public platforms to streamline administrative operations and citizen services.' },
+		contributions: [
+			{ es: 'Optimización y digitalización de trámites.', en: 'Optimization and digitization of public services.' },
+			{ es: 'Reestructuración de servicios de mensajería, con un ahorro del 85% en costos.', en: 'Restructuring of messaging services, achieving 85% cost savings.' },
+			{ es: 'Modernización de plataformas de consulta, agilizando el flujo administrativo en 30%.', en: 'Modernization of inquiry platforms, accelerating administrative workflows by 30%.' },
+		],
+	},
+	{
+		role: { es: 'Semi-Senior Backend Web Developer', en: 'Semi-Senior Backend Web Developer' },
+		company: { es: 'Fraguala - startup', en: 'Fraguala - startup' },
+		location: { es: 'Ocotlán, Jal.', en: 'Ocotlán, Jalisco' },
+		period: { es: 'Diciembre 2023 - Julio 2026', en: 'December 2023 - July 2026' },
+		summary: { es: 'Planeación, diseño, desarrollo e implementación en producción de sistemas web empresariales para empresas privadas y entidades gubernamentales.', en: 'Planning, design, development, and production implementation of enterprise web systems for private companies and government entities.' },
+		contributions: [
+			{ es: 'Desarrollo de soluciones on-premise y SaaS adaptadas a los requerimientos de clientes.', en: 'Development of on-premise and SaaS solutions tailored to client requirements.' },
+			{ es: 'Optimización de flujos administrativos para reducir errores operativos y tiempos de gestión.', en: 'Optimization of administrative workflows to reduce operational errors and management time.' },
+			{ es: 'Levantamiento de requerimientos, análisis funcional y entrega de soluciones de extremo a extremo.', en: 'Requirements gathering, functional analysis, and end-to-end solution delivery.' },
+			{ es: 'Estandarización del uso de contenedores para mejorar la consistencia del equipo y los despliegues.', en: 'Container standardization to improve team consistency and deployment stability.' },
+		],
+	},
+	{
+		role: { es: 'Desarrollador Freelance', en: 'Freelance Developer' },
+		company: { es: 'Freelance', en: 'Freelance' },
+		location: { es: 'Guadalajara, Jal.', en: 'Guadalajara, Jalisco' },
+		period: { es: 'Julio 2021 - Noviembre 2023', en: 'July 2021 - November 2023' },
+		summary: { es: 'Diseño y desarrollo de software a medida y plataformas web para pequeñas empresas y profesionales independientes.', en: 'Design and development of custom software and web platforms for small businesses and independent professionals.' },
+		contributions: [
+			{ es: 'Plataforma de reservación de mobiliario para eventos con Django y SQLite.', en: 'Event-furniture booking platform built with Django and SQLite.' },
+			{ es: 'Sistema de gestión para taller automotriz con Visual Basic y Microsoft Access.', en: 'Workshop management system built with Visual Basic and Microsoft Access.' },
+			{ es: 'Landing pages para negocios de belleza, bienestar, entrenamiento y nutrición.', en: 'Landing pages for beauty, wellness, training, and nutrition businesses.' },
+			{ es: 'Sistema de Punto de Venta (POS) con Spring Boot, Angular y MySQL.', en: 'Point-of-sale system built with Spring Boot, Angular, and MySQL.' },
+		],
+	},
+];
 export const specialties = [
 	{
-		title: { es: 'Backend Development', en: 'Backend Development' },
+		title: { es: 'Backend y APIs', en: 'Backend & APIs' },
 		description: {
-			es: 'Patrones de diseño y arquitectura de software para crear sistemas robustos y mantenibles.',
-			en: 'Design patterns and software architecture to create robust and maintainable systems.',
+			es: 'Arquitectura, patrones e integraciones para crear sistemas robustos, mantenibles y conectados.',
+			en: 'Architecture, patterns, and integrations to create robust, maintainable, connected systems.',
 		},
 		technologies: [
 			{ label: 'LAMP', src: 'https://img.shields.io/badge/LAMP-FF6C37?style=for-the-badge&logo=lamp&logoColor=white' },
@@ -276,16 +316,6 @@ export const specialties = [
 			{ label: 'Background jobs', src: 'https://img.shields.io/badge/Background_Jobs-555555?style=for-the-badge' },
 			{ label: 'REST API', src: 'https://img.shields.io/badge/REST-02569B?style=for-the-badge&logo=fastapi&logoColor=white' },
 			{ label: 'CLEAN', src: 'https://img.shields.io/badge/CLEAN-555555?style=for-the-badge' },
-		],
-	},
-	{
-		title: { es: 'APIs', en: 'APIs' },
-		description: {
-			es: 'La clave para conectar sistemas y plataformas.',
-			en: 'Key to connecting systems and platforms.',
-		},
-		technologies: [
-			{ label: 'REST', src: 'https://img.shields.io/badge/REST-02569B?style=for-the-badge&logo=fastapi&logoColor=white' },
 			{ label: 'Swagger', src: 'https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=white' },
 			{ label: 'OAuth', src: 'https://img.shields.io/badge/OAuth-555555?style=for-the-badge' },
 			{ label: 'JWT', src: 'https://img.shields.io/badge/JWT-555555?style=for-the-badge' },
