@@ -9,9 +9,7 @@ import {
 	projects,
 	professionalExperience,
 	specialties,
-	stackGroups,
 	uiCopy,
-	workflow,
 } from '../content/portfolio';
 import Layout from '../layouts/Layout.astro';
 
@@ -65,22 +63,62 @@ const copy = uiCopy.es;
 				</div>
 			</section>
 
-			<section id="about" class="content-section section-grid neo-section neo-section-about" aria-labelledby="about-title">
-				<img class="neo-decor neo-decor-about" src="/neo-2.webp" alt="" aria-hidden="true" />
-				<div class="neo-decor-shine neo-decor-shine-about" aria-hidden="true"></div>
-				<div class="section-heading">
-					<p class="eyebrow" data-i18n="aboutEyebrow">{copy.aboutEyebrow}</p>
-					<h2 id="about-title" data-i18n="aboutTitle">{copy.aboutTitle}</h2>
+			<section id="experience" class="content-section neo-section neo-section-experience" aria-labelledby="experience-title">
+				<img class="neo-decor neo-decor-experience" src="/neo-4.webp" alt="" aria-hidden="true" />
+				<div class="neo-decor-shine neo-decor-shine-experience" aria-hidden="true"></div>
+				<div class="section-heading wide">
+					<p class="eyebrow" data-i18n="experienceEyebrow">{copy.experienceEyebrow}</p>
+					<h2 id="experience-title" data-i18n="experienceTitle">{copy.experienceTitle}</h2>
 				</div>
-				<div class="section-body">
-					<p data-i18n="aboutBody">{copy.aboutBody}</p>
-					<blockquote data-i18n="aboutQuote">{copy.aboutQuote}</blockquote>
+				<ol class="experience-timeline">
+					{professionalExperience.map((job) => (
+						<li class="experience-entry">
+							<span class="timeline-marker" aria-hidden="true"><BriefcaseBusiness size={14} strokeWidth={2.4} /></span>
+							<article class="experience-card">
+								<div class="experience-card-header">
+									<div>
+										<time data-lang-es={job.period.es} data-lang-en={job.period.en}>{job.period.es}</time>
+										<h3 data-lang-es={job.role.es} data-lang-en={job.role.en}>{job.role.es}</h3>
+										<p class="experience-company" data-lang-es={job.company.es} data-lang-en={job.company.en}>{job.company.es}</p>
+									</div>
+									<span class="experience-location" data-lang-es={job.location.es} data-lang-en={job.location.en}>{job.location.es}</span>
+								</div>
+								<p class="experience-summary" data-lang-es={job.summary.es} data-lang-en={job.summary.en}>{job.summary.es}</p>
+								<h4 data-lang-es="Contribuciones clave" data-lang-en="Key contributions">Contribuciones clave</h4>
+								<ul class="experience-contributions">
+									{job.contributions.map((contribution) => <li data-lang-es={contribution.es} data-lang-en={contribution.en}>{contribution.es}</li>)}
+								</ul>
+							</article>
+						</li>
+					))}
+				</ol>
+			</section>
+
+			<section id="specialties" class="content-section neo-section neo-section-specialties" aria-labelledby="specialties-title">
+				<img class="neo-decor neo-decor-specialties" src="/neo-3.webp" alt="" aria-hidden="true" />
+				<div class="neo-decor-shine neo-decor-shine-specialties" aria-hidden="true"></div>
+				<div class="section-heading wide">
+					<p class="eyebrow" data-i18n="specialtiesEyebrow">{copy.specialtiesEyebrow}</p>
+					<h2 id="specialties-title" data-i18n="specialtiesTitle">{copy.specialtiesTitle}</h2>
+				</div>
+
+				<div class="specialty-grid">
+					{specialties.map((item) => (
+						<article class="specialty-card">
+							<h3 data-lang-es={item.title.es} data-lang-en={item.title.en}>{item.title.es}</h3>
+							<p data-lang-es={item.description.es} data-lang-en={item.description.en}>{item.description.es}</p>
+							<ul class="badge-list" aria-label="Tecnologias relacionadas">
+								{item.technologies.map((technology) => (
+									<li>{technology.label}</li>
+								))}
+							</ul>
+						</article>
+					))}
 				</div>
 			</section>
 
 			<section id="education" class="content-section education-section" aria-labelledby="education-title">
 				<div class="section-heading wide">
-					<p class="eyebrow" data-i18n="educationEyebrow">{copy.educationEyebrow}</p>
 					<h2 id="education-title" data-i18n="educationTitle">{copy.educationTitle}</h2>
 				</div>
 
@@ -133,29 +171,6 @@ const copy = uiCopy.es;
 				</div>
 			</section>
 
-			<section id="specialties" class="content-section neo-section neo-section-specialties" aria-labelledby="specialties-title">
-				<img class="neo-decor neo-decor-specialties" src="/neo-3.webp" alt="" aria-hidden="true" />
-				<div class="neo-decor-shine neo-decor-shine-specialties" aria-hidden="true"></div>
-				<div class="section-heading wide">
-					<p class="eyebrow" data-i18n="specialtiesEyebrow">{copy.specialtiesEyebrow}</p>
-					<h2 id="specialties-title" data-i18n="specialtiesTitle">{copy.specialtiesTitle}</h2>
-				</div>
-
-				<div class="specialty-grid">
-					{specialties.map((item) => (
-						<article class="specialty-card">
-							<h3 data-lang-es={item.title.es} data-lang-en={item.title.en}>{item.title.es}</h3>
-							<p data-lang-es={item.description.es} data-lang-en={item.description.en}>{item.description.es}</p>
-							<ul class="badge-list" aria-label="Tecnologias relacionadas">
-								{item.technologies.map((technology) => (
-									<li>{technology.label}</li>
-								))}
-							</ul>
-						</article>
-					))}
-				</div>
-			</section>
-
 			<section id="projects" class="content-section" aria-labelledby="projects-title">
 				<div class="section-heading wide">
 					<p class="eyebrow" data-i18n="projectsEyebrow">{copy.projectsEyebrow}</p>
@@ -165,69 +180,22 @@ const copy = uiCopy.es;
 				<ProjectShowcase projects={projects} copy={copy} />
 			</section>
 
-			<section id="experience" class="content-section neo-section neo-section-experience" aria-labelledby="experience-title">
-				<img class="neo-decor neo-decor-experience" src="/neo-4.webp" alt="" aria-hidden="true" />
-				<div class="neo-decor-shine neo-decor-shine-experience" aria-hidden="true"></div>
-				<div class="section-heading wide">
-					<p class="eyebrow" data-i18n="experienceEyebrow">{copy.experienceEyebrow}</p>
-					<h2 id="experience-title" data-i18n="experienceTitle">{copy.experienceTitle}</h2>
-				</div>
-				<ol class="experience-timeline">
-					{professionalExperience.map((job) => (
-						<li class="experience-entry">
-							<span class="timeline-marker" aria-hidden="true"><BriefcaseBusiness size={14} strokeWidth={2.4} /></span>
-							<article class="experience-card">
-								<div class="experience-card-header">
-									<div>
-										<time data-lang-es={job.period.es} data-lang-en={job.period.en}>{job.period.es}</time>
-										<h3 data-lang-es={job.role.es} data-lang-en={job.role.en}>{job.role.es}</h3>
-										<p class="experience-company" data-lang-es={job.company.es} data-lang-en={job.company.en}>{job.company.es}</p>
-									</div>
-									<span class="experience-location" data-lang-es={job.location.es} data-lang-en={job.location.en}>{job.location.es}</span>
-								</div>
-								<p class="experience-summary" data-lang-es={job.summary.es} data-lang-en={job.summary.en}>{job.summary.es}</p>
-								<h4 data-lang-es="Contribuciones clave" data-lang-en="Key contributions">Contribuciones clave</h4>
-								<ul class="experience-contributions">
-									{job.contributions.map((contribution) => <li data-lang-es={contribution.es} data-lang-en={contribution.en}>{contribution.es}</li>)}
-								</ul>
-							</article>
-						</li>
-					))}
-				</ol>
-			</section>
-
-			<section class="content-section" aria-labelledby="stack-title">
-				<div class="section-heading wide">
-					<p class="eyebrow" data-i18n="stackEyebrow">{copy.stackEyebrow}</p>
-					<h2 id="stack-title" data-i18n="stackTitle">{copy.stackTitle}</h2>
-				</div>
-
-				<div class="stack-grid">
-					{stackGroups.map((group) => (
-						<div class="stack-group">
-							<h3 data-lang-es={group.label.es} data-lang-en={group.label.en}>{group.label.es}</h3>
-							<ul>
-								{group.items.map((item) => <li>{item}</li>)}
-							</ul>
-						</div>
-					))}
-				</div>
-			</section>
-
-			<section class="content-section section-grid" aria-labelledby="workflow-title">
+			<section id="about" class="content-section section-grid neo-section neo-section-about" aria-labelledby="about-title">
+				<img class="neo-decor neo-decor-about" src="/neo-2.webp" alt="" aria-hidden="true" />
+				<div class="neo-decor-shine neo-decor-shine-about" aria-hidden="true"></div>
 				<div class="section-heading">
-					<p class="eyebrow" data-i18n="workflowEyebrow">{copy.workflowEyebrow}</p>
-					<h2 id="workflow-title" data-i18n="workflowTitle">{copy.workflowTitle}</h2>
+					<p class="eyebrow" data-i18n="aboutEyebrow">{copy.aboutEyebrow}</p>
+					<h2 id="about-title" data-i18n="aboutTitle">{copy.aboutTitle}</h2>
 				</div>
-				<ol class="workflow-list">
-					{workflow.map((item) => <li data-lang-es={item.es} data-lang-en={item.en}>{item.es}</li>)}
-				</ol>
+				<div class="section-body">
+					<p data-i18n="aboutBody">{copy.aboutBody}</p>
+					<blockquote data-i18n="aboutQuote">{copy.aboutQuote}</blockquote>
+				</div>
 			</section>
 
 			<section id="contact" class="contact-section" aria-labelledby="contact-title">
 				<p class="eyebrow" data-i18n="contactEyebrow">{copy.contactEyebrow}</p>
 				<h2 id="contact-title" data-i18n="contactTitle">{copy.contactTitle}</h2>
-				<p data-i18n="contactBody">{copy.contactBody}</p>
 				<div class="contact-actions">
 					<a class="button button-primary" href={contactLinks[0].href}>
 						<Mail size={18} aria-hidden="true" />
@@ -497,7 +465,6 @@ const copy = uiCopy.es;
 	.specialty-card,
 	.project-card,
 	.experience-card,
-	.stack-group,
 	.contact-section {
 		border: 1px solid var(--border);
 		border-radius: var(--radius-md);
@@ -743,8 +710,7 @@ const copy = uiCopy.es;
 	}
 
 	.specialty-card,
-	.project-card,
-	.stack-group {
+	.project-card {
 		padding: 1.15rem;
 	}
 
@@ -929,61 +895,22 @@ const copy = uiCopy.es;
 	.experience-contributions li { display: grid; grid-template-columns: 0.55rem 1fr; gap: 0.55rem; }
 	.experience-contributions li::before { content: ''; width: 0.42rem; height: 0.42rem; margin-top: 0.35rem; border-radius: 999px; background: var(--accent-green); }
 
-	.stack-grid {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1rem;
-	}
-
-	.stack-group ul {
-		display: grid;
-		gap: 0.55rem;
-		padding: 0;
-		margin: 1rem 0 0;
-		list-style: none;
-		color: var(--muted);
-		line-height: 1.35;
-	}
-
-	.workflow-list {
-		display: grid;
-		gap: 0.75rem;
-		padding: 0;
-		margin: 0;
-		counter-reset: workflow;
-		list-style: none;
-	}
-
-	.workflow-list li {
-		display: grid;
-		grid-template-columns: 2.5rem 1fr;
-		align-items: center;
-		gap: 0.9rem;
-		padding: 0.9rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-sm);
-		background: var(--surface);
-		font-weight: 800;
-		line-height: 1.35;
-		counter-increment: workflow;
-	}
-
-	.workflow-list li::before {
-		content: counter(workflow, decimal-leading-zero);
-		display: inline-grid;
-		place-items: center;
-		width: 2.5rem;
-		height: 2.5rem;
-		border-radius: var(--radius-xs);
-		background: var(--surface-subtle);
-		color: var(--muted);
-		font-size: 0.8rem;
-		font-weight: 900;
-	}
-
 	.contact-section {
 		padding: clamp(1.25rem, 4vw, 2.5rem);
+		border: 0;
+		background: transparent;
+		box-shadow: none;
 		text-align: left;
+	}
+
+	.contact-actions .button-primary,
+	.contact-actions .button-secondary {
+		border: 0;
+		background: transparent;
+	}
+
+	.contact-actions .button-primary {
+		color: var(--text);
 	}
 
 	.contact-section h2 {
@@ -996,8 +923,7 @@ const copy = uiCopy.es;
 	}
 
 	@media (max-width: 1100px) {
-		.specialty-grid,
-		.stack-grid {
+		.specialty-grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
@@ -1117,8 +1043,7 @@ const copy = uiCopy.es;
 			padding-inline: 0.85rem;
 		}
 
-		.specialty-grid,
-		.stack-grid {
+		.specialty-grid {
 			grid-template-columns: 1fr;
 		}
 

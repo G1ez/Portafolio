@@ -3,11 +3,11 @@ export type Language = 'es' | 'en';
 export const defaultLanguage: Language = 'es';
 
 export const navItems = [
-	{ href: '#about', labelKey: 'navAbout' },
-	{ href: '#education', labelKey: 'navEducation' },
-	{ href: '#specialties', labelKey: 'navSpecialties' },
-	{ href: '#projects', labelKey: 'navProjects' },
 	{ href: '#experience', labelKey: 'navExperience' },
+	{ href: '#specialties', labelKey: 'navSpecialties' },
+	{ href: '#education', labelKey: 'navEducation' },
+	{ href: '#projects', labelKey: 'navProjects' },
+	{ href: '#about', labelKey: 'navAbout' },
 	{ href: '#contact', labelKey: 'navContact' },
 ];
 
@@ -64,14 +64,8 @@ export const uiCopy = {
 		experienceTitle: 'Lugares dónde he hecho commit :)',
 		experienceBody:
 			'He trabajado en el desarrollo y mantenimiento de sistemas web, creacion de modulos administrativos, diseno de APIs, modelado de bases de datos e interfaces para operacion diaria. Mi participacion suele estar cerca del proceso: entender necesidades, convertirlas en componentes funcionales y dejar bases que otros puedan mantener.',
-		stackEyebrow: 'Stack tecnologico',
-		stackTitle: 'Herramientas agrupadas por uso, sin porcentajes decorativos.',
-		workflowEyebrow: 'Forma de trabajo',
-		workflowTitle: 'Codigo mantenible, procesos claros y sistemas que no se rompen un lunes en produccion.',
 		contactEyebrow: 'Contáctame ;)',
-		contactTitle: 'Hablemos si necesitas backend, APIs, sistemas internos o integraciones.',
-		contactBody:
-			'Puedo ayudarte a convertir procesos manuales en plataformas mas claras, seguras y medibles. Si el problema vive entre operacion, datos y software, probablemente vale la pena conversarlo.',
+		contactTitle: 'Empecemos una conversación.',
 		contactEmail: 'Enviar correo',
 		contactGithub: 'GitHub',
 		contactLinkedin: 'LinkedIn',
@@ -128,14 +122,8 @@ export const uiCopy = {
 		experienceTitle: 'Places where I made commits :D',
 		experienceBody:
 			'I have worked on the development and maintenance of web systems, administrative modules, APIs, database models, and interfaces for day-to-day operations. My role usually stays close to the process: understand the need, turn it into functional components, and leave foundations other people can maintain.',
-		stackEyebrow: 'Technology stack',
-		stackTitle: 'Tools grouped by use, without decorative percentages.',
-		workflowEyebrow: 'How I work',
-		workflowTitle: 'Maintainable code, clear processes, and systems that do not break on a Monday in production.',
 		contactEyebrow: 'Contact me ;)',
-		contactTitle: 'Let\'s talk if you need backend, APIs, internal systems, or integrations.',
-		contactBody:
-			'I can help turn manual processes into clearer, safer, and more measurable platforms. If the problem lives between operations, data, and software, it is probably worth a conversation.',
+		contactTitle: 'Let\'s start a conversation.',
 		contactEmail: 'Email me',
 		contactGithub: 'GitHub',
 		contactLinkedin: 'LinkedIn',
@@ -475,22 +463,6 @@ export const projects = [
 	},
 ];
 
-export const stackGroups = [
-	{ label: { es: 'Lenguajes', en: 'Languages' }, items: ['PHP', 'JavaScript', 'HTML', 'CSS', 'SQL'] },
-	{ label: { es: 'Frameworks', en: 'Frameworks' }, items: ['Laravel', 'CodeIgniter', 'Astro'] },
-	{ label: { es: 'Bases de datos', en: 'Databases' }, items: ['MySQL', 'SQL queries', 'Relational models'] },
-	{ label: { es: 'Herramientas', en: 'Tools' }, items: ['Git', 'GitHub', 'Bitbucket', 'Docker', 'Postman'] },
-	{ label: { es: 'Integraciones', en: 'Integrations' }, items: ['REST APIs', 'Authentication', 'Billing flows', 'Mobile app backends'] },
-];
-
-export const workflow = [
-	{ es: 'Entiendo el proceso antes de programar.', en: 'I understand the process before writing code.' },
-	{ es: 'Priorizo codigo mantenible y facil de revisar.', en: 'I prioritize maintainable code that is easy to review.' },
-	{ es: 'Diseno soluciones que puedan escalar sin perder claridad.', en: 'I design solutions that can scale without losing clarity.' },
-	{ es: 'Busco reducir trabajo manual y errores repetitivos.', en: 'I look for ways to reduce manual work and repetitive errors.' },
-	{ es: 'Documento lo necesario para que el sistema siga siendo entendible.', en: 'I document what is needed so the system remains understandable.' },
-	{ es: 'Pienso en sistemas que puedan crecer con el negocio.', en: 'I think in systems that can grow with the business.' },
-];
 
 export const contactLinks = [
 	{ key: 'contactEmail', href: 'mailto:miguelglezedu@gmail.com' },
